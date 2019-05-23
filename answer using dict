@@ -10,7 +10,8 @@ class Solution(object):
             if not letter in s_dict:  # if the key is not in s_dict...
                 s_dict[letter] = 1
             else:
-                s_dict[letter] += 1
+                s_dict[letter] += 1    #  s_dict[letter] = s_dict.get(letter, 0) + 1    <<<前4行可用此取代            
+                                    
         index_list = []
         for i in s_dict:
             if s_dict[i] == 1:
