@@ -1,0 +1,56 @@
+class Solution(object):
+    def firstUniqChar(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """        
+        
+        s_dict = dict()   # s_dict = {}
+        for letter in s:
+            if not letter in s_dict:  # if the key is not in s_dict...
+                s_dict[letter] = 1
+            else:
+                s_dict[letter] += 1
+        index_list = []
+        for i in s_dict:
+            if s_dict[i] == 1:
+                index_list.append(s.index(i))  # 把所有unique的字母的index存到一list中，再回傳最小的那個
+                
+        if index_list == []:
+            return -1
+        else:
+            return min(index_list)
+        
+        '''
+        Runtime: 88 ms, faster than 88.61% of Python online submissions for First Unique Character in a String.
+Memory Usage: 12.2 MB, less than 65.26% of Python online submissions for First Unique Character in a String.
+        '''
+        
+        
+        
+        ''' 思路過程
+        方法二:dictionary?(hashmap in Java)
+        用dict記數，then把所有unique的字母的index存到一list中，再回傳最小的那個
+        
+        
+        方法一:暴力硬幹(...暴力不能解決問題)
+        
+        for letter in s:
+            if s.count(letter) == 1:
+                return s.index(letter)
+        else:
+            return -1
+        
+        
+        #Submission Result: Time Limit Exceeded  <<果然
+        
+        方法二:想辦法用O(n)的方式解決，也就是在count的過程中，就把重複的的全部砍掉，才不會重複運算
+        問題是怎麼砍?
+        考慮set，順序會跑掉，所以也不行
+        
+        
+        '''
+        
+        
+        
+            
